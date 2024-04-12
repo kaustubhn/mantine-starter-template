@@ -12,16 +12,23 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as AuthImport } from './routes/auth'
+import { Route as AppImport } from './routes/app'
 import { Route as AuthVerifyOtpImport } from './routes/auth/verify-otp'
 import { Route as AuthVerifyEmailImport } from './routes/auth/verify-email'
 import { Route as AuthRegisterImport } from './routes/auth/register'
 import { Route as AuthLoginImport } from './routes/auth/login'
 import { Route as AuthForgotPasswordImport } from './routes/auth/forgot-password'
+import { Route as AppDashboardImport } from './routes/app/dashboard'
 
 // Create/Update Routes
 
 const AuthRoute = AuthImport.update({
   path: '/auth',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AppRoute = AppImport.update({
+  path: '/app',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -50,13 +57,26 @@ const AuthForgotPasswordRoute = AuthForgotPasswordImport.update({
   getParentRoute: () => AuthRoute,
 } as any)
 
+const AppDashboardRoute = AppDashboardImport.update({
+  path: '/dashboard',
+  getParentRoute: () => AppRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/app': {
+      preLoaderRoute: typeof AppImport
+      parentRoute: typeof rootRoute
+    }
     '/auth': {
       preLoaderRoute: typeof AuthImport
       parentRoute: typeof rootRoute
+    }
+    '/app/dashboard': {
+      preLoaderRoute: typeof AppDashboardImport
+      parentRoute: typeof AppImport
     }
     '/auth/forgot-password': {
       preLoaderRoute: typeof AuthForgotPasswordImport
@@ -84,6 +104,7 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren([
+  AppRoute.addChildren([AppDashboardRoute]),
   AuthRoute.addChildren([
     AuthForgotPasswordRoute,
     AuthLoginRoute,
