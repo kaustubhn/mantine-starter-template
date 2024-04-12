@@ -18,6 +18,7 @@ import { Route as AuthVerifyEmailImport } from './routes/auth/verify-email'
 import { Route as AuthRegisterImport } from './routes/auth/register'
 import { Route as AuthLoginImport } from './routes/auth/login'
 import { Route as AuthForgotPasswordImport } from './routes/auth/forgot-password'
+import { Route as AppSettingsImport } from './routes/app/settings'
 import { Route as AppDashboardImport } from './routes/app/dashboard'
 
 // Create/Update Routes
@@ -57,6 +58,11 @@ const AuthForgotPasswordRoute = AuthForgotPasswordImport.update({
   getParentRoute: () => AuthRoute,
 } as any)
 
+const AppSettingsRoute = AppSettingsImport.update({
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+
 const AppDashboardRoute = AppDashboardImport.update({
   path: '/dashboard',
   getParentRoute: () => AppRoute,
@@ -76,6 +82,10 @@ declare module '@tanstack/react-router' {
     }
     '/app/dashboard': {
       preLoaderRoute: typeof AppDashboardImport
+      parentRoute: typeof AppImport
+    }
+    '/app/settings': {
+      preLoaderRoute: typeof AppSettingsImport
       parentRoute: typeof AppImport
     }
     '/auth/forgot-password': {
@@ -104,7 +114,7 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren([
-  AppRoute.addChildren([AppDashboardRoute]),
+  AppRoute.addChildren([AppDashboardRoute, AppSettingsRoute]),
   AuthRoute.addChildren([
     AuthForgotPasswordRoute,
     AuthLoginRoute,

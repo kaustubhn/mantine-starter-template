@@ -4,18 +4,13 @@ import { useDisclosure } from '@mantine/hooks';
 import { ModalsProvider } from '@mantine/modals';
 import { Notifications } from '@mantine/notifications';
 import { NavigationProgress } from '@mantine/nprogress';
-import { IconBellRinging, IconReceipt2, IconFingerprint, IconKey, IconDatabaseImport, Icon2fa, IconSettings, IconChevronRight } from '@tabler/icons-react';
+import { IconDashboard, IconSettings } from '@tabler/icons-react';
 import { Link, Outlet } from '@tanstack/react-router';
 import classes from "./app-layout.module.css";
 import { useState } from 'react';
 
 const data = [
-    { link: '/app/dashboard', label: 'Dashboard', icon: IconBellRinging },
-    { link: '', label: 'Billing', icon: IconReceipt2 },
-    { link: '', label: 'Security', icon: IconFingerprint },
-    { link: '', label: 'SSH Keys', icon: IconKey },
-    { link: '', label: 'Databases', icon: IconDatabaseImport },
-    { link: '', label: 'Authentication', icon: Icon2fa },
+    { link: '/app/dashboard', label: 'Dashboard', icon: IconDashboard },
     { link: '/app/settings', label: 'Settings', icon: IconSettings },
 ];
 
@@ -74,11 +69,11 @@ export default function AppBaseLayout() {
 
                                             <div style={{ flex: 1 }}>
                                                 <Text size="sm" fw={500}>
-                                                    Harriette Spoonlicker
+                                                    John Doe
                                                 </Text>
 
                                                 <Text c="dimmed" size="xs">
-                                                    hspoonlicker@outlook.com
+                                                    john.doe@example.com
                                                 </Text>
                                             </div>
                                         </Group>
