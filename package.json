@@ -16,11 +16,14 @@
     "@mantine/modals": "^7.7.2",
     "@mantine/notifications": "^7.7.2",
     "@mantine/nprogress": "^7.7.2",
+    "@tanstack/react-router": "^1.26.20",
     "dayjs": "^1.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@tanstack/router-devtools": "^1.26.20",
+    "@tanstack/router-vite-plugin": "^1.26.16",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
