@@ -31,6 +31,7 @@
     "@kubb/swagger-client": "^2.12.5",
     "@kubb/swagger-tanstack-query": "^2.12.5",
     "@kubb/swagger-ts": "^2.12.5",
+    "@tanstack/react-query-devtools": "^5.29.2",
     "@tanstack/router-devtools": "^1.26.20",
     "@tanstack/router-vite-plugin": "^1.26.16",
     "@types/react": "^18.2.66",
