@@ -12,6 +12,8 @@ import {
     rem,
 } from '@mantine/core';
 import classes from './auth.module.css';
+import { IconArrowLeft } from '@tabler/icons-react';
+import { Link } from '@tanstack/react-router';
 
 
 function ForgotPasswordPage(props) {
@@ -28,10 +30,12 @@ function ForgotPasswordPage(props) {
                 <TextInput label="Your email" placeholder="me@mantine.dev" required />
                 <Group justify="space-between" mt="lg" className={classes.controls}>
                     <Anchor c="dimmed" size="sm" className={classes.control}>
-                        <Center inline>
-                            {/* <IconArrowLeft style={{ width: rem(12), height: rem(12) }} stroke={1.5} /> */}
-                            <Box ml={5}>Back to the login page</Box>
-                        </Center>
+                        <Link to="/auth/login">
+                            <Center inline>
+                                <IconArrowLeft style={{ width: rem(12), height: rem(12) }} stroke={1.5} />
+                                <Box ml={5}>Back to the login page</Box>
+                            </Center>
+                        </Link>
                     </Anchor>
                     <Button className={classes.control}>Reset password</Button>
                 </Group>

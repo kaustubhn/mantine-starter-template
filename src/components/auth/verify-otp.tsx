@@ -9,33 +9,34 @@ import {
     Container,
     Group,
     Button,
+    PinInput,
 } from '@mantine/core';
 import classes from './auth.module.css';
+import { Link } from '@tanstack/react-router';
 
 function VerifyOtpPage(props) {
     return (
         <Container size={420} my={40}>
             <Title ta="center" className={classes.title}>
-                Welcome back!
+                Enter Authentication Code!
             </Title>
             <Text c="dimmed" size="sm" ta="center" mt={5}>
-                Do not have an account yet?{' '}
+                Back to Login?{' '}
                 <Anchor size="sm" component="button">
-                    Create account
+                    <Link to="/auth/login">
+                        Login
+                    </Link>
                 </Anchor>
             </Text>
 
             <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-                <TextInput label="Email" placeholder="you@mantine.dev" required />
-                <PasswordInput label="Password" placeholder="Your password" required mt="md" />
-                <Group justify="space-between" mt="lg">
-                    <Checkbox label="Remember me" />
-                    <Anchor component="button" size="sm">
-                        Forgot password?
-                    </Anchor>
-                </Group>
+                <Title order={5}>Enter 6 Digit Code</Title>
+                <br />
+
+                <PinInput length={6} ></PinInput>
+
                 <Button fullWidth mt="xl">
-                    Sign in
+                    Proceed
                 </Button>
             </Paper>
         </Container>

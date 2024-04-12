@@ -11,6 +11,7 @@ import {
     Button,
 } from '@mantine/core';
 import classes from './auth.module.css';
+import { Link } from '@tanstack/react-router';
 
 export function LoginPage() {
     return (
@@ -21,7 +22,9 @@ export function LoginPage() {
             <Text c="dimmed" size="sm" ta="center" mt={5}>
                 Do not have an account yet?{' '}
                 <Anchor size="sm" component="button">
-                    Create account
+                    <Link to="/auth/register">
+                        Create account
+                    </Link>
                 </Anchor>
             </Text>
 
@@ -30,13 +33,17 @@ export function LoginPage() {
                 <PasswordInput label="Password" placeholder="Your password" required mt="md" />
                 <Group justify="space-between" mt="lg">
                     <Checkbox label="Remember me" />
-                    <Anchor component="button" size="sm">
-                        Forgot password?
+                    <Anchor size="sm" component="button">
+                        <Link to="/auth/forgot-password">
+                            Forgot password?
+                        </Link>
                     </Anchor>
                 </Group>
-                <Button fullWidth mt="xl">
-                    Sign in
-                </Button>
+                <Link to="/app/dashboard">
+                    <Button fullWidth mt="xl">
+                        Sign in
+                    </Button>
+                </Link>
             </Paper>
         </Container>
     );
